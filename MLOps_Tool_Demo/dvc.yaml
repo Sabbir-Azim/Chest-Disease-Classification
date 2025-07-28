@@ -1,0 +1,20 @@
+stages:
+  stages_01:
+    cmd: python pipeline/stage_01.py
+    deps:
+    - pipeline/stage_01.py
+    outs:
+    - artifacts/text.txt
+
+  stages_03:
+    cmd: python pipeline/stage_03.py
+    deps:
+    - pipeline/stage_03.py
+    - artifacts/output.txt
+  stages_02:
+    cmd: python pipeline/stage_02.py
+    deps:
+    - artifacts/text.txt
+    - pipeline/stage_02.py
+    outs:
+    - artifacts/output.txt
